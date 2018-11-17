@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# Author: Eliska Kloberdanz
 
 import sys
 import os
