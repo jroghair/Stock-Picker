@@ -50,7 +50,7 @@ print(y_pred)
 accuracy = mlp.score(X_test_scaled, y_test)
 
 print("The accuracy of this model is: ", accuracy*100, " %")
-'''
+
 # Compare strategy and market returns
 dataset['y_pred'] = np.NaN
 dataset.iloc[(len(dataset) - len(y_pred)):,-1:] = y_pred
@@ -77,6 +77,6 @@ plt.show()
 
 
 #trade_dataset.to_csv('testoutput.csv')
-'''
+
 
 
