@@ -55,11 +55,7 @@ for day in listOfWeekDays:
 #print(len(ListOfArticles))
 #print(len(listOfWeekDays))
 
-data = {'Date':listOfWeekDays, 'Article': ListOfArticles}
 
-dataFrame = pd.DataFrame(data)
-
-dataFrame.to_csv('wsjTest.csv')
 
 
 import nltk
@@ -94,6 +90,7 @@ t = [({word: (word in word_tokenize(x[0])) for word in dictionary}, x[1]) for x 
 # Step 4 – the classifier is trained with sample data
 classifier = nltk.NaiveBayesClassifier.train(t)
 
+listOfRatings = []
 for article in ListOfArticles:
     sumOfPositive = 0
     sumOfNegative = 0
@@ -108,8 +105,12 @@ for article in ListOfArticles:
             else:
                 sumOfNegative += 1
     if sumOfPositive > sumOfNegative:
-        print("pos")
+        listOfRatings.append("pos")
     else:
-        print("neg")
+        listOfRatings.append("neg")
 
+data = {'Date':listOfWeekDays, 'Article': ListOfArticles, 'Sentiment': listOfRatings}
 
+dataFrame = pd.DataFrame(data)
+
+dataFrame.to_csv('wsjTest.csv')
